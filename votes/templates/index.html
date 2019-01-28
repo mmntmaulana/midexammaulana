@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block head %}
+  this is the index page
+{% endblock %}
+
+{% block body %}
+<h4> LIST OF CANDIDATES: </h4>
+<ol>
+  {% for candidate in candidates %}
+    <li>
+      <a href="{% url 'votes:detail' candidate.id %}">{{candidate.lastname}}, {{candidate.firstname}}, {{candidate.position}} <br />
+    </li>
+  {% endfor %}
+</ol>
+<br/>
+<a href="{% url 'votes:candidate_create' %}"> <button>Create new Candidate</button></a>
+<a href="{% url 'votes:position_create' %}"> <button>Create new Position</button></a>
+<br />
+{% endblock %}

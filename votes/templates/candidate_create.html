@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block head %}
+  this is the update page
+{% endblock %}
+
+{% block body %}
+<form action="{% url 'votes:candidate_create' %}" method="POST">
+  {% csrf_token %}
+  {% for field in form %}
+    {{ field.errors }}
+    {{ field.label }} {{ field }} <br/>
+  {% endfor %}
+  <input type="submit" value="Create candidate">
+</form>
+<a href="{% url 'votes:index' %}"> <button>Return to index page</button></a>
+{% endblock %}
